@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { IPayment } from "../../assets/interfaces";
+import { getPayments } from "../Payments/Payments.api";
 
 function Payments() {
   const [payments, setPayments] = useState<IPayment[]>([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/payments")
-      .then((response) => {
-        console.log(response.data);
-        setPayments(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error when fetching: ", error);
-      });
+    const fetchData = async () => {
+      try {
+        const data = await getPayments();
+        console.log(data);
+        setPayments(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
