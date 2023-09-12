@@ -1,0 +1,244 @@
+{
+  "payments": [
+    {
+      "id": "1",
+      "price": 50.0,
+      "VAT": 10.0,
+      "totalPrice": 60.0,
+      "products": [
+        {
+          "id": "101",
+          "name": "Product A",
+          "description": "Description of Product A",
+          "price": 30.0,
+          "VAT": 6.0,
+          "totalPrice": 36.0
+        },
+        {
+          "id": "102",
+          "name": "Product B",
+          "description": "Description of Product B",
+          "price": 20.0,
+          "VAT": 4.0,
+          "totalPrice": 24.0
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "price": 75.5,
+      "VAT": 15.1,
+      "totalPrice": 90.6,
+      "products": [
+        {
+          "id": "201",
+          "name": "Product C",
+          "description": "Description of Product C",
+          "price": 45.0,
+          "VAT": 9.0,
+          "totalPrice": 54.0
+        },
+        {
+          "id": "202",
+          "name": "Product D",
+          "description": "Description of Product D",
+          "price": 30.5,
+          "VAT": 6.1,
+          "totalPrice": 36.6
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "price": 120.0,
+      "VAT": 24.0,
+      "totalPrice": 144.0,
+      "products": [
+        {
+          "id": "301",
+          "name": "Product E",
+          "description": "Description of Product E",
+          "price": 80.0,
+          "VAT": 16.0,
+          "totalPrice": 96.0
+        },
+        {
+          "id": "302",
+          "name": "Product F",
+          "description": "Description of Product F",
+          "price": 40.0,
+          "VAT": 8.0,
+          "totalPrice": 48.0
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "price": 22.75,
+      "VAT": 4.55,
+      "totalPrice": 27.3,
+      "products": [
+        {
+          "id": "401",
+          "name": "Product G",
+          "description": "Description of Product G",
+          "price": 12.5,
+          "VAT": 2.5,
+          "totalPrice": 15.0
+        },
+        {
+          "id": "402",
+          "name": "Product H",
+          "description": "Description of Product H",
+          "price": 10.25,
+          "VAT": 2.05,
+          "totalPrice": 12.3
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "price": 65.99,
+      "VAT": 13.2,
+      "totalPrice": 79.19,
+      "products": [
+        {
+          "id": "501",
+          "name": "Product I",
+          "description": "Description of Product I",
+          "price": 45.99,
+          "VAT": 9.2,
+          "totalPrice": 55.19
+        },
+        {
+          "id": "502",
+          "name": "Product J",
+          "description": "Description of Product J",
+          "price": 20.0,
+          "VAT": 4.0,
+          "totalPrice": 24.0
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "price": 38.5,
+      "VAT": 7.7,
+      "totalPrice": 46.2,
+      "products": [
+        {
+          "id": "601",
+          "name": "Product K",
+          "description": "Description of Product K",
+          "price": 25.0,
+          "VAT": 5.0,
+          "totalPrice": 30.0
+        },
+        {
+          "id": "602",
+          "name": "Product L",
+          "description": "Description of Product L",
+          "price": 13.5,
+          "VAT": 2.7,
+          "totalPrice": 16.2
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "price": 95.25,
+      "VAT": 19.05,
+      "totalPrice": 114.3,
+      "products": [
+        {
+          "id": "701",
+          "name": "Product M",
+          "description": "Description of Product M",
+          "price": 60.0,
+          "VAT": 12.0,
+          "totalPrice": 72.0
+        },
+        {
+          "id": "702",
+          "name": "Product N",
+          "description": "Description of Product N",
+          "price": 35.25,
+          "VAT": 7.05,
+          "totalPrice": 42.3
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "price": 28.75,
+      "VAT": 5.75,
+      "totalPrice": 34.5,
+      "products": [
+        {
+          "id": "801",
+          "name": "Product O",
+          "description": "Description of Product O",
+          "price": 18.5,
+          "VAT": 3.7,
+          "totalPrice": 22.2
+        },
+        {
+          "id": "802",
+          "name": "Product P",
+          "description": "Description of Product P",
+          "price": 10.25,
+          "VAT": 2.05,
+          "totalPrice": 12.3
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "price": 50.0,
+      "VAT": 10.0,
+      "totalPrice": 60.0,
+      "products": [
+        {
+          "id": "901",
+          "name": "Product Q",
+          "description": "Description of Product Q",
+          "price": 30.0,
+          "VAT": 6.0,
+          "totalPrice": 36.0
+        },
+        {
+          "id": "902",
+          "name": "Product R",
+          "description": "Description of Product R",
+          "price": 20.0,
+          "VAT": 4.0,
+          "totalPrice": 24.0
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "price": 50.0,
+      "VAT": 10.0,
+      "totalPrice": 55.0,
+      "products": [
+        {
+          "id": "1001",
+          "name": "Product 1",
+          "description": "Description of Product 1",
+          "price": 30.0,
+          "VAT": 6.0,
+          "totalPrice": 33.0
+        },
+        {
+          "id": "1002",
+          "name": "Product 2",
+          "description": "Description of Product 2",
+          "price": 20.0,
+          "VAT": 4.0,
+          "totalPrice": 22.0
+        }
+      ]
+    }
+  ]
+}
