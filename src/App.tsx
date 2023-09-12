@@ -1,8 +1,15 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  return <div className='App'>Payments Portal</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
