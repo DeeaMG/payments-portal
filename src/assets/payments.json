@@ -224,7 +224,7 @@
       "products": [
         {
           "id": "1001",
-          "name": "Product 1",
+          "name": "Product S",
           "description": "Description of Product 1",
           "price": 30.0,
           "VAT": 6.0,
@@ -232,7 +232,7 @@
         },
         {
           "id": "1002",
-          "name": "Product 2",
+          "name": "Product T",
           "description": "Description of Product 2",
           "price": 20.0,
           "VAT": 4.0,

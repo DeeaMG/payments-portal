@@ -10,3 +10,12 @@ export const getPayments = async () => {
     throw new Error("Error fetching payments: " + error.message);
   }
 };
+
+export const editPayments = async (id: number, payment: object) => {
+  try {
+    await axios.put(`${API_BASE_URL}/payments/${id}`, { payment });
+    console.log("Payment edited successfully", payment);
+  } catch (error: any) {
+    throw new Error("Error fetching payments: " + error.message);
+  }
+};
