@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { IPayment } from "../../assets/interfaces";
 import { getPayments, editPayments } from "../Payments/Payments.api";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { deepEqual } from "../../utils/ObjectEquality";
 
 function Payments() {
   const [payments, setPayments] = useState<IPayment[]>([]);
@@ -60,20 +61,19 @@ function Payments() {
   ];
 
   const handleCellEdit = async (params: any) => {
-    console.log("YUHUUUU", params);
     const { id, field, value } = params;
-    try {
-      const updatedPayments = payments.map((payment) =>
-        payment.id === id ? { ...payment, [field]: value } : payment
-      );
 
-      setPayments(updatedPayments);
-      await editPayments(id, updatedPayments);
+    const paymentToUpdate: IPayment | undefined = payments.find((payment) => payment.id === id);
 
-      console.log(updatedPayments);
-    } catch (error) {
-      console.error(error);
-    }
+    if (!deepEqual(paymentToUpdate, payments[id])) {
+      try {
+        (paymentToUpdate as any)[field] = value;
+        setPayments([...payments, paymentToUpdate as any]);
+        await editPayments(id, paymentToUpdate);
+      } catch (error) {
+        console.error(error);
+      }
+    } else return;
   };
 
   return (
@@ -83,7 +83,7 @@ function Payments() {
         <DataGrid
           rows={payments}
           columns={columns}
-          onCellEditStop={handleCellEdit}
+          onStateChange={handleCellEdit}
           initialState={{
             pagination: {
               paginationModel: {
