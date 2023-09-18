@@ -83,7 +83,7 @@ function Payments() {
         <DataGrid
           rows={payments}
           columns={columns}
-          onStateChange={handleCellEdit}
+          onCellEditStart={handleCellEdit}
           initialState={{
             pagination: {
               paginationModel: {
