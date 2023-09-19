@@ -68,7 +68,7 @@ function Payments() {
     if (!deepEqual(paymentToUpdate, payments[id])) {
       try {
         (paymentToUpdate as any)[field] = value;
-        setPayments([...payments, paymentToUpdate as any]);
+        setPayments([...payments]);
         await editPayments(id, paymentToUpdate);
       } catch (error) {
         console.error(error);
