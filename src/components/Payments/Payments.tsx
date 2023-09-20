@@ -3,7 +3,7 @@ import { IPayment } from "../../assets/interfaces";
 import { getPayments, editPayments } from "../Payments/Payments.api";
 import { Box } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { deepEqual } from "../../utils/ObjectEquality";
+import { isEqual } from "lodash";
 
 function Payments() {
   const [payments, setPayments] = useState<IPayment[]>([]);
@@ -64,7 +64,7 @@ function Payments() {
 
     const paymentToUpdate: IPayment | undefined = payments.find((payment) => payment.id === id);
 
-    if (!deepEqual(paymentToUpdate, payments[id])) {
+    if (!isEqual(paymentToUpdate, payments[id])) {
       try {
         (paymentToUpdate as any)[field] = value;
         setPayments([...payments]);

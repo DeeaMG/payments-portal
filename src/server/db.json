@@ -2,7 +2,7 @@
   "payments": [
     {
       "id": "1",
-      "price": 500,
+      "price": 50440,
       "VAT": 10,
       "totalPrice": 60,
       "products": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "2",
-      "price": 75.556,
+      "price": 75.55756,
       "VAT": 15.1,
       "totalPrice": 90.6,
       "products": [
