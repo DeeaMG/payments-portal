@@ -12,8 +12,6 @@ export const getPayments = async () => {
 };
 
 export const editPayments = async (id: number, payment: any) => {
-  console.log("This is the payment object: ", payment);
-
   try {
     await axios.put(`${API_BASE_URL}/payments/${id}`, payment);
     console.info("Payment edited successfully", payment);
