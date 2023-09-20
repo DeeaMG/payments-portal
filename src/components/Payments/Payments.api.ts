@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IPayment } from "../../assets/interfaces";
 
 const API_BASE_URL = "http://localhost:3001";
 
@@ -11,7 +12,7 @@ export const getPayments = async () => {
   }
 };
 
-export const editPayments = async (id: number, payment: any) => {
+export const editPayments = async (id: number, payment: IPayment | undefined) => {
   try {
     await axios.put(`${API_BASE_URL}/payments/${id}`, payment);
     console.info("Payment edited successfully", payment);
