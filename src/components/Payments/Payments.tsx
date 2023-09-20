@@ -4,6 +4,7 @@ import { getPayments, editPayments } from "../Payments/Payments.api";
 import { Box } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { isEqual } from "lodash";
+import { GridCellEditStartParams } from "@mui/x-data-grid";
 
 function Payments() {
   const [payments, setPayments] = useState<IPayment[]>([]);
@@ -59,16 +60,17 @@ function Payments() {
     },
   ];
 
-  const handleCellEdit = async (params: any) => {
+  const handleCellEdit = async (params: GridCellEditStartParams) => {
     const { id, field, value } = params;
 
     const paymentToUpdate: IPayment | undefined = payments.find((payment) => payment.id === id);
 
-    if (!isEqual(paymentToUpdate, payments[id])) {
+    let newId = parseInt(id.toString());
+    if (!isEqual(paymentToUpdate, payments[newId])) {
       try {
         (paymentToUpdate as any)[field] = value;
         setPayments([...payments]);
-        await editPayments(id, paymentToUpdate);
+        await editPayments(newId, paymentToUpdate);
       } catch (error) {
         console.error(error);
       }
