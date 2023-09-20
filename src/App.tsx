@@ -1,19 +1,23 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Payments from "./components/Payments/Payments";
-import Home from "./components/Home/Home";
-import Users from "./components/Users/Users";
+
+const Home = lazy(() => import("./components/Home/Home"));
+const Payments = lazy(() => import("./components/Payments/Payments"));
+const Users = lazy(() => import("./components/Users/Users"));
+const Loading = lazy(() => import("./components/Loading/Loading"));
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path='/payments' element={<Payments />} />
-        <Route path='/users' element={<Users />} />
-      </Routes>
-    </BrowserRouter>
+    <Suspense fallback={<Loading />}>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path='/payments' element={<Payments />} />
+          <Route path='/users' element={<Users />} />
+        </Routes>
+      </BrowserRouter>{" "}
+    </Suspense>
   );
 }
 
