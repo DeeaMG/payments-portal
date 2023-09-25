@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { IPayment, IProduct } from "../../assets/interfaces";
+import React, { useEffect, useState, SetStateAction } from "react";
+import { ErrorType, IPayment, IProduct } from "../../assets/interfaces";
 import { getPayments, editPayments } from "../Payments/Payments.api";
 import { Box } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { isEqual } from "lodash";
 import { GridCellEditStartParams } from "@mui/x-data-grid";
+import { useError } from "../../context/errorContext";
 
 function Payments() {
   const [payments, setPayments] = useState<IPayment[]>([]);
+  const { error, setError } = useError();
+
+  const handleApiErrorComponent = (error: SetStateAction<ErrorType | null>) => {
+    const err: ErrorType = error as Error;
+    setError(err);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getPayments();
+        const data = await getPayments((error) => handleApiErrorComponent(error));
         setPayments(data);
       } catch (error) {
-        console.error(error);
+        const err: ErrorType = error as Error;
+        handleApiErrorComponent(err);
       }
     };
 
@@ -65,14 +73,20 @@ function Payments() {
 
     const paymentToUpdate: IPayment | undefined = payments.find((payment) => payment.id === id);
 
+    const handleApiErrorComponent = (error: SetStateAction<ErrorType | null>) => {
+      const err: ErrorType = error as Error;
+      setError(err);
+    };
+
     let newId = parseInt(id.toString());
     if (!isEqual(paymentToUpdate, payments[newId])) {
       try {
         (paymentToUpdate as any)[field] = value;
         setPayments([...payments]);
-        await editPayments(newId, paymentToUpdate);
+        await editPayments(newId, paymentToUpdate, (error) => handleApiErrorComponent(error));
       } catch (error) {
-        console.error(error);
+        const err: ErrorType = error as Error;
+        handleApiErrorComponent(err);
       }
     } else return;
   };
@@ -97,6 +111,7 @@ function Payments() {
           disableRowSelectionOnClick
         />
       </Box>
+      {error && <div>Error: {error.message}</div>}
     </div>
   );
 }

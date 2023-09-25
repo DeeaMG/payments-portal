@@ -14,3 +14,7 @@ export interface IPayment {
   totalPrice: number;
   products: IProduct[];
 }
+
+export interface ErrorType {
+  message: string;
+}
