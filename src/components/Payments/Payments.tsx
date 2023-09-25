@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IPayment } from "../../assets/interfaces";
+import { IPayment, IProduct } from "../../assets/interfaces";
 import { getPayments, editPayments } from "../Payments/Payments.api";
 import { Box } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
@@ -53,7 +53,7 @@ function Payments() {
       valueGetter: (params: GridValueGetterParams) => {
         const products = params.row.products || [];
         const productNames = products.map(
-          (product: any) => `${product.name}: $${product.totalPrice}`
+          (product: IProduct) => `${product.name}: $${product.totalPrice}`
         );
         return productNames.join(", ");
       },
