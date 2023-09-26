@@ -1,0 +1,38 @@
+Tema:
+
+Create a payments portal, having two modules or two main routes: /payments and /users
+For payments we have the following scenarios
+/payments/ (LIST)
+/payments/:id (VIEW/EDIT)
+
+ 
+/users/ (LIST)
+/users/:id (VIEW/EDIT)
+/users/create (CREATE USER)
+
+ 
+Each main route should have children routes done with React Router V6
+Create Pages for Payments List and Payments Details using an array of payments that have the following model:
+
+interface Payment {
+id: string;
+price: number;
+VAT: number;
+totalPrice: number;
+products: Product[]
+}
+
+interface Product {
+id: string;
+name: string;
+description: string;
+price: number;
+VAT: number;
+totalPrice: number;
+}
+
+ 
+
+- the array of payments should be stored in a json and delivered with the help of the npm package JSON Server that enables a resource server over an existing JSON file.
+- The payments list should be displayed in a Data Grid
+- For components (including data grid), use React Material UI package.
