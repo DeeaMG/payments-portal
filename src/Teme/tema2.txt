@@ -1,0 +1,8 @@
+Create edit form using Drawer MUI
+Use Formiq or React Hooks Forms
+How to pass data to the drawer? (There can be 3 ways to do it)
+Validations using YUP (npm)
+2 Buttons: 
+    - Discard: make a pop up if there is something changed
+    (Are you sure you want to discard everything? Yes/No)
+    - Save: request.PUT(URL/id)
