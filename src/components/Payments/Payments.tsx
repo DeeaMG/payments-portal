@@ -3,12 +3,15 @@ import { ErrorType, IPayment, IProduct } from "../../assets/interfaces";
 import { getPayments, editPayments } from "../Payments/Payments.api";
 import { Box } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { isEqual } from "lodash";
+import { isEqual, set } from "lodash";
 import { GridCellEditStartParams } from "@mui/x-data-grid";
 import { useError } from "../../context/errorContext";
+import CustomDrawer from "../CustomDrawer/CustomDrawer";
 
 function Payments() {
   const [payments, setPayments] = useState<IPayment[]>([]);
+  const [isDrawer, setIsDrawer] = useState<boolean>(false);
+  const [selectedRowData, setSelectedRowData] = useState<IPayment | null>(null);
   const { error, setError } = useError();
 
   const handleApiErrorComponent = (error: SetStateAction<ErrorType | null>) => {
@@ -91,14 +94,19 @@ function Payments() {
     } else return;
   };
 
+  const handleSetIsDrawer = (rowData: any) => {
+    setSelectedRowData(rowData);
+    return setIsDrawer(!isDrawer);
+  };
+
   return (
     <div>
       <h1>Payments</h1>
-      <Box sx={{ height: 400, width: "100%" }}>
+      <Box sx={{ height: 400, padding: "0 1rem" }}>
         <DataGrid
           rows={payments}
           columns={columns}
-          onCellEditStart={handleCellEdit}
+          onRowClick={(params) => handleSetIsDrawer(params.row)}
           initialState={{
             pagination: {
               paginationModel: {
@@ -107,10 +115,10 @@ function Payments() {
             },
           }}
           pageSizeOptions={[5]}
-          checkboxSelection
           disableRowSelectionOnClick
         />
       </Box>
+      <CustomDrawer isOpen={isDrawer} setIsOpen={handleSetIsDrawer} rowData={selectedRowData} />
       {error && <div>Error: {error.message}</div>}
     </div>
   );
