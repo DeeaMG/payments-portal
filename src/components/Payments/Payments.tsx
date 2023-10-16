@@ -1,4 +1,5 @@
 import React, { useEffect, useState, SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
 import { ErrorType, IPayment, IProduct } from "../../assets/interfaces";
 import { getPayments, editPayments } from "../Payments/Payments.api";
 import { Box } from "@mui/material";
@@ -13,6 +14,7 @@ function Payments() {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
   const [selectedRowData, setSelectedRowData] = useState<IPayment | null>(null);
   const { error, setError } = useError();
+  const navigate = useNavigate();
 
   const handleApiErrorComponent = (error: SetStateAction<ErrorType | null>) => {
     const err: ErrorType = error as Error;
@@ -96,7 +98,11 @@ function Payments() {
 
   const handleSetIsDrawer = (rowData: any) => {
     setSelectedRowData(rowData);
-    return setIsDrawer(!isDrawer);
+    setIsDrawer(!isDrawer);
+
+    if (rowData.id) {
+      navigate(`/payments/${rowData.id}`);
+    }
   };
 
   return (
